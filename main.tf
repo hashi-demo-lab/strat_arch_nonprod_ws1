@@ -1,6 +1,6 @@
 module "landingzone" {
   source  = "app.terraform.io/cloudbrokeraz/landingzone/aws"
-  version = "0.2.4"
+  version = "1.0.0"
 
   # Feature flags
   enable_vpc         = var.enable_vpc
