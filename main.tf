@@ -1,5 +1,5 @@
 module "landingzone" {
-  source  = "app.terraform.io/hashi-demos-apj/landingzone/aws"
+  source  = "app.terraform.io/cloudbrokeraz/landingzone/aws"
   version = "0.2.4"
 
   # Feature flags
