@@ -9,11 +9,6 @@ variable "owner" {
   description = "Resource owner identified using an email address"
   type        = string
   default     = "aaron"
-  
-  validation {
-    condition     = var.owner == null || can(regex("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$", var.owner))
-    error_message = "The owner variable must be a valid email address."
-  }
 }
 
 variable "ttl" {
