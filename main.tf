@@ -1,18 +1,29 @@
-data "aws_caller_identity" "current" {}
+module "landingzone" {
+  source  = "app.terraform.io/hashi-demos-apj/landingzone/aws"
+  version = "0.2.4"
 
-module "datazone_domain" {
-  source  = "app.terraform.io/tfc-demo-au/datazone-domain/awscc"
-  version = "~>  0.2.5"
-
-  aws_account                 = data.aws_caller_identity.current.account_id
-  datazone_domain_name        = var.datazone_domain_name
-  datazone_description        = var.datazone_domain_name
-  datazone_kms_key_identifier = var.datazone_kms_key_identifier
-  single_sign_on              = var.single_sign_on
-  tags                        = var.tags
-  region                      = var.region
-
-  environment_blueprints = var.environment_blueprints
-  datazone_projects      = var.datazone_projects
-
+  # Feature flags
+  enable_vpc         = var.enable_vpc
+  enable_http_access = var.enable_http_access
+  enable_ssh_access  = var.enable_ssh_access
+  enable_tgw         = var.enable_tgw
+  enable_ssm         = var.enable_ssm
+  
+  # General configuration
+  region          = var.region
+  owner           = var.owner
+  ttl             = var.ttl
+  deployment_name = var.deployment_name
+  
+  # Networking configuration
+  vpc_cidr       = var.aws_vpc_cidr
+  public_subnets = var.aws_public_subnets
+  private_subnets = var.aws_private_subnets
+  
+  # SSH configuration
+  aws_key_pair_key_name = var.aws_key_pair_key_name
+  ssh_pubkey            = var.ssh_pubkey
+  
+  # Workspace configuration
+  workspace_type = var.workspace_type
 }

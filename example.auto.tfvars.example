@@ -1,28 +1,24 @@
-datazone_domain_name        = "example_domain_template"
-datazone_description        = "AWS DataZone Domain"
-datazone_kms_key_identifier = null
-single_sign_on              = {}
-tags                        = null
-region                      = "ap-southeast-2"
+# General configuration
+region          = "ap-southeast-2"
+owner           = "admin@example.com"
+ttl             = 48
+deployment_name = "dev"
 
-environment_blueprints = {
-    DefaultDataWarehouse = {
-      enabled_regions                  = ["ap-southeast-2"]
-      environment_blueprint_identifier = "DefaultDataWarehouse"
-    }
-    DefaultDataLake = {
-      enabled_regions                  = ["ap-southeast-2"]
-      environment_blueprint_identifier = "DefaultDataLake"
-    }
-}
+# Networking configuration
+aws_vpc_cidr        = "10.200.0.0/16"
+aws_public_subnets  = ["10.200.10.0/24"]
+aws_private_subnets = ["10.200.20.0/24"]
 
- datazone_projects = {
-    shared_env = {
-      description    = "shared environment project"
-      glossary_terms = null
-    }
-    data_team = {
-      description    = "Data Team Project 1"
-      glossary_terms = null
-    }
-}
+# Feature flags
+enable_vpc         = true
+enable_http_access = true
+enable_ssh_access  = true
+enable_tgw         = false
+enable_ssm         = true
+
+# SSH configuration
+aws_key_pair_key_name = "my-key"
+ssh_pubkey            = "ssh-rsa AAAAB3NzaC1yc2EAAA... example@localhost"
+
+# Workspace configuration
+workspace_type = "landingZone"

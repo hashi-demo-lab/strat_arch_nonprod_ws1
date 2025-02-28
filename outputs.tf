@@ -1,49 +1,29 @@
-output "datazone_role_id" {
-  value = module.datazone_domain.datazone_role_id
-  description = "The ID of the DataZone Role"
+output "deployment_id" {
+  description = "Unique identifier for this deployment"
+  value       = module.landingzone.deployment_id
 }
 
-output "datazone_role_arn" {
-  value = module.datazone_domain.datazone_role_arn
-  description = "The ARN of the DataZone Role"
+output "aws_key_pair_key_name" {
+  description = "Name of the AWS key pair created for this deployment"
+  value       = module.landingzone.aws_key_pair_name
 }
 
-output "datazone_domain_id" {
-  value = module.datazone_domain.datazone_domain_id
-  description = "The ID of the DataZone Domain"
+output "public_subnet_ids" {
+  description = "IDs of public subnets created in the VPC"
+  value       = module.landingzone.public_subnet_ids
 }
 
-output "datazone_environment_blueprints" {
-  value = module.datazone_domain.datazone_environment_blueprints
-  description = "DataZone environment blueprints"
+output "security_group_http_id" {
+  description = "ID of the security group for HTTP access"
+  value       = module.landingzone.security_group_http_id
 }
 
-output "projects" {
-  value = module.datazone_domain.projects
-  description = "The ID of the Environment Project"
+output "security_group_ssh_id" {
+  description = "ID of the security group for SSH access"
+  value       = module.landingzone.security_group_ssh_id
 }
 
-output "s3_datazone" {
-  value = module.datazone_domain.s3_datazone
-  description = "The S3 DataZone Bucket"
-}
-
-output "s3_datazone_region" {
-  value = module.datazone_domain.s3_datazone_region
-  description = "The S3 DataZone Bucket Region"
-}
-
-output "datazone_portal" {
-  value = module.datazone_domain.datazone_portal
-  description = "The DataZone Portal"
-}
-
-output "datazone_status" {
-  value = module.datazone_domain.datazone_status
-  description = "The DataZone Status"
-}
-
-output "awscc_executionrole" {
-  value = module.datazone_domain.awscc_executionrole
-  description = "The AWS Control Tower Execution Role"
+output "ssm_instance_profile_name" {
+  description = "Name of the IAM instance profile for Systems Manager"
+  value       = module.landingzone.ssm_instance_profile_name
 }
