@@ -1,10 +1,17 @@
 terraform {
-  required_version = ">= 1.0.0"
+  cloud {
+    hostname     = "app.terraform.io"
+    organization = "cloudbrokeraz"
+
+    workspaces {
+      name = "strat_arch_nonprod_ws1"
+    }
+  }
   
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 5.0"
+      version = "~> 5"
     }
   }
 }
